@@ -349,7 +349,7 @@ export default async function Home() {
         <div className="container">
           <div className="cabin-testimonial">
             <div className="cabin-testimonial-quote">
-              Setiap tegukan kopi dari KopiKing membawa saya kembali ke kenangan masa kecil di kampung halaman. 
+              Setiap tegukan kopi dari Pondok Kopi Potorono membawa saya kembali ke kenangan masa kecil di kampung halaman. 
               Rasa yang autentik dan kualitas yang konsisten membuat mereka menjadi pilihan utama saya.
             </div>
             <div className="cabin-ornament">
@@ -391,7 +391,7 @@ export default async function Home() {
                 color: 'var(--color-vintage-dark-brown)',
                 marginBottom: '1rem'
               }}>
-                KopiKing lahir dari kecintaan mendalam terhadap kopi Nusantara. 
+                Pondok Kopi Potorono lahir dari kecintaan mendalam terhadap kopi Nusantara. 
                 Sejak 1950, kami telah berkomitmen untuk menghadirkan kopi terbaik dari berbagai penjuru Indonesia.
               </p>
               <p style={{
@@ -482,7 +482,7 @@ export default async function Home() {
               color: 'var(--color-vintage-beige)',
               marginBottom: '2rem'
             }}>
-              Bergabunglah dengan ribuan penikmat kopi yang telah menemukan cita rasa otentik Nusantara bersama KopiKing
+              Bergabunglah dengan ribuan penikmat kopi yang telah menemukan cita rasa otentik Nusantara bersama Pondok Kopi Potorono
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/products" className="cabin-btn cabin-btn-solid">

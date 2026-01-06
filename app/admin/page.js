@@ -69,7 +69,7 @@ export default function AdminDashboard() {
           fontFamily: 'var(--font-body)',
           color: 'var(--color-vintage-brown)'
         }}>
-          Selamat datang di panel admin KopiKing
+          Selamat datang di panel admin Pondok Kopi Potorono
         </p>
       </div>
 

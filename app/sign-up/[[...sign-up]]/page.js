@@ -49,7 +49,7 @@ export default function SignUpPage() {
               margin: 0,
               textTransform: 'uppercase'
             }}>
-              KopiKing
+              Pondok Kopi Potorono
             </h1>
             <p style={{
               fontFamily: 'var(--font-body)',

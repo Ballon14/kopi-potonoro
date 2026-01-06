@@ -14,7 +14,7 @@ export default function AboutPage() {
     { 
       year: '1950', 
       title: 'Awal Mula', 
-      desc: 'KopiKing didirikan sebagai kedai kopi kecil di Jakarta dengan visi menghadirkan kopi Nusantara terbaik.',
+      desc: 'Pondok Kopi Potorono didirikan sebagai kedai kopi kecil di Jakarta dengan visi menghadirkan kopi Nusantara terbaik.',
       icon: '☕'
     },
     { 
@@ -203,7 +203,7 @@ export default function AboutPage() {
             marginBottom: '1.5rem',
             lineHeight: 1.1
           }}>
-            Tentang KopiKing
+            Tentang Pondok Kopi Potorono
           </h1>
           <p style={{
             fontFamily: 'var(--font-body)',
@@ -313,7 +313,7 @@ export default function AboutPage() {
                     marginRight: '0.5rem',
                     color: 'var(--color-vintage-gold)'
                   }}>K</span>
-                  opiKing lahir pada tahun 1950 dari sebuah impian sederhana — menghadirkan kopi Nusantara 
+                  opi Potorono lahir pada tahun 1950 dari sebuah impian sederhana — menghadirkan kopi Nusantara 
                   berkualitas tinggi kepada setiap penikmat kopi. Berawal dari kedai kecil di sudut kota Jakarta, 
                   kami telah tumbuh menjadi salah satu penyedia kopi premium terpercaya di Indonesia.
                 </p>

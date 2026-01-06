@@ -106,7 +106,7 @@ export default function Navbar() {
                   margin: 0,
                   textTransform: 'uppercase'
                 }}>
-                  KopiKing
+                  Pondok Kopi Potorono
                 </h1>
                 <span style={{
                   fontFamily: 'var(--font-sans)',

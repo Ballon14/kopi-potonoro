@@ -55,7 +55,7 @@ export default function Footer() {
                   margin: 0,
                   textTransform: 'uppercase'
                 }}>
-                  KopiKing
+                  Pondok Kopi Potorono
                 </h3>
                 <span style={{
                   fontFamily: 'var(--font-sans)',
@@ -194,7 +194,7 @@ export default function Footer() {
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
                 <span style={{ fontFamily: 'var(--font-body)', color: 'var(--color-vintage-beige)', fontSize: '0.9375rem' }}>
-                  Jl. Kopi Nusantara No. 50<br/>Jakarta 12345, Indonesia
+                  Jl. Kaliabu - Kajoran, Sambak,<br/>Kec. Kajoran, Kabupaten Magelang,<br/>Jawa Tengah 56163
                 </span>
               </li>
               <li style={{ 
@@ -207,7 +207,7 @@ export default function Footer() {
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
                 <span style={{ fontFamily: 'var(--font-body)', color: 'var(--color-vintage-beige)', fontSize: '0.9375rem' }}>
-                  +62 812-3456-7890
+                  0857-7772-9305
                 </span>
               </li>
               <li style={{ 
@@ -313,7 +313,7 @@ export default function Footer() {
             color: 'rgba(248, 244, 237, 0.5)',
             margin: 0
           }}>
-            © {currentYear} KopiKing. Warisan Cita Rasa Nusantara. All rights reserved.
+            © {currentYear} Pondok Kopi Potorono. Warisan Cita Rasa Nusantara. All rights reserved.
           </p>
           <div style={{
             display: 'flex',

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "KopiKing - Warisan Cita Rasa Nusantara",
+  title: "Pondok Kopi Potorono - Warisan Cita Rasa Nusantara",
   description: "Marketplace kopi premium Indonesia dengan berbagai pilihan kopi Arabica, Robusta, dan Blend terbaik dari seluruh Nusantara",
 };
 
