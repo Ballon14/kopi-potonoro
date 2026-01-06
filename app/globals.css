@@ -1,26 +1,1195 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Crimson+Text:wght@400;600;700&family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Cabin2 Vintage Color Palette */
+  --color-vintage-cream: #f8f4ed;
+  --color-vintage-beige: #e8dcc4;
+  --color-vintage-brown: #8b6914;
+  --color-vintage-dark-brown: #4a3f2f;
+  --color-vintage-coffee: #2a2118;
+  --color-vintage-gold: #c9a961;
+  --color-vintage-sepia: #704214;
+  --color-vintage-rust: #a0522d;
+  --color-vintage-sage: #9c9f84;
+  --color-vintage-charcoal: #1a1512;
+  
+  /* Semantic Colors */
+  --color-background: var(--color-vintage-cream);
+  --color-surface: #ffffff;
+  --color-text-primary: var(--color-vintage-coffee);
+  --color-text-secondary: var(--color-vintage-dark-brown);
+  --color-accent: var(--color-vintage-gold);
+  --color-border: var(--color-vintage-beige);
+  
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-heading: 'Crimson Text', serif;
+  --font-body: 'Lora', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(42, 33, 24, 0.08);
+  --shadow-md: 0 4px 12px rgba(42, 33, 24, 0.12);
+  --shadow-lg: 0 8px 24px rgba(42, 33, 24, 0.16);
+  --shadow-xl: 0 16px 48px rgba(42, 33, 24, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ================================
+   TYPOGRAPHY - Cabin2 Style
+   ================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-vintage-coffee);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: var(--color-vintage-brown);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-vintage-gold);
+}
+
+/* ================================
+   CABIN2 FULL-WIDTH SECTIONS
+   ================================ */
+.cabin-section {
+  position: relative;
+  width: 100%;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+.cabin-section-dark {
+  background-color: var(--color-vintage-charcoal);
+  color: var(--color-vintage-cream);
+}
+
+.cabin-section-dark h1,
+.cabin-section-dark h2,
+.cabin-section-dark h3,
+.cabin-section-dark h4 {
+  color: var(--color-vintage-cream);
+}
+
+.cabin-section-dark p {
+  color: var(--color-vintage-beige);
+}
+
+.cabin-section-beige {
+  background-color: var(--color-vintage-beige);
+}
+
+/* Hero Section - Full Height */
+.cabin-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--color-vintage-charcoal) 0%,
+    var(--color-vintage-coffee) 100%
+  );
+}
+
+.cabin-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a961' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.cabin-hero-content {
+  text-align: center;
+  z-index: 1;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.cabin-hero h1 {
+  color: var(--color-vintage-cream);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.cabin-hero p {
+  color: var(--color-vintage-beige);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Subtitle/Tagline */
+.cabin-tagline {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-vintage-gold);
+  margin-bottom: 1rem;
+  display: inline-block;
+  position: relative;
+}
+
+.cabin-tagline::before,
+.cabin-tagline::after {
+  content: '—';
+  margin: 0 1rem;
+  color: var(--color-vintage-gold);
+  opacity: 0.5;
+}
+
+/* ================================
+   PARALLAX BACKGROUND
+   ================================ */
+.parallax-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 21, 18, 0.7) 0%,
+    rgba(42, 33, 24, 0.85) 100%
+  );
+}
+
+/* ================================
+   ANIMATED COUNTERS
+   ================================ */
+.cabin-counters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  padding: 4rem 0;
+}
+
+.cabin-counter {
+  text-align: center;
+  padding: 2rem;
+}
+
+.cabin-counter-number {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  color: var(--color-vintage-gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.cabin-counter-label {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-vintage-cream);
+  opacity: 0.8;
+}
+
+/* ================================
+   SERVICE/FEATURE CARDS
+   ================================ */
+.cabin-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.cabin-service-card {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.cabin-service-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-vintage-gold);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.cabin-service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.cabin-service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.cabin-service-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-vintage-gold);
+  border-radius: 50%;
+  color: var(--color-vintage-gold);
+  transition: all var(--transition-base);
+}
+
+.cabin-service-card:hover .cabin-service-icon {
+  background: var(--color-vintage-gold);
+  color: var(--color-vintage-coffee);
+}
+
+.cabin-service-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-vintage-coffee);
+}
+
+.cabin-service-desc {
+  font-size: 0.95rem;
+  color: var(--color-vintage-dark-brown);
+  line-height: 1.7;
+}
+
+/* ================================
+   VINTAGE DECORATIVE ELEMENTS
+   ================================ */
+.vintage-border {
+  border: 2px solid var(--color-vintage-brown);
+  border-image: repeating-linear-gradient(
+    45deg,
+    var(--color-vintage-brown),
+    var(--color-vintage-brown) 10px,
+    transparent 10px,
+    transparent 20px
+  ) 1;
+  padding: var(--spacing-md);
+}
+
+.vintage-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-vintage-gold) 20%,
+    var(--color-vintage-gold) 80%,
+    transparent
+  );
+  margin: var(--spacing-lg) 0;
+  position: relative;
+}
+
+.vintage-divider::before {
+  content: '☕';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-background);
+  padding: 0 var(--spacing-sm);
+  font-size: 1.25rem;
+  color: var(--color-vintage-gold);
+}
+
+.vintage-divider-light::before {
+  background: var(--color-vintage-charcoal);
+}
+
+/* Ornamental Lines */
+.cabin-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.cabin-ornament-line {
+  width: 60px;
+  height: 1px;
+  background: var(--color-vintage-gold);
+}
+
+.cabin-ornament-diamond {
+  width: 10px;
+  height: 10px;
+  background: var(--color-vintage-gold);
+  transform: rotate(45deg);
+}
+
+/* ================================
+   VINTAGE BADGE
+   ================================ */
+.vintage-badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-vintage-gold);
+  color: var(--color-vintage-coffee);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius-sm);
+}
+
+/* ================================
+   BUTTONS - Cabin2 Style
+   ================================ */
+.cabin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: 2px solid var(--color-vintage-gold);
+  background: transparent;
+  color: var(--color-vintage-gold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.cabin-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-vintage-gold);
+  transform: translateY(100%);
+  transition: transform var(--transition-base);
+}
+
+.cabin-btn:hover::before {
+  transform: translateY(0);
+}
+
+.cabin-btn:hover {
+  color: var(--color-vintage-coffee);
+}
+
+.cabin-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cabin-btn-solid {
+  background: var(--color-vintage-gold);
+  color: var(--color-vintage-coffee);
+}
+
+.cabin-btn-solid::before {
+  background: var(--color-vintage-cream);
+}
+
+.cabin-btn-solid:hover {
+  color: var(--color-vintage-coffee);
+}
+
+.vintage-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 2px solid var(--color-vintage-brown);
+  background: var(--color-vintage-brown);
+  color: var(--color-vintage-cream);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.vintage-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-vintage-gold);
+  transform: translateX(-100%);
+  transition: transform var(--transition-base);
+}
+
+.vintage-btn:hover::before {
+  transform: translateX(0);
+}
+
+.vintage-btn:hover {
+  border-color: var(--color-vintage-gold);
+  color: var(--color-vintage-coffee);
+}
+
+.vintage-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.vintage-btn-outline {
+  background: transparent;
+  color: var(--color-vintage-cream);
+  border-color: var(--color-vintage-cream);
+}
+
+.vintage-btn-outline:hover {
+  background: var(--color-vintage-cream);
+  color: var(--color-vintage-coffee);
+  border-color: var(--color-vintage-cream);
+}
+
+/* ================================
+   VINTAGE CARD - Enhanced
+   ================================ */
+.vintage-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.vintage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--color-vintage-brown),
+    var(--color-vintage-gold),
+    var(--color-vintage-brown)
+  );
+}
+
+.vintage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ================================
+   PRODUCT CARD - Cabin2 Style
+   ================================ */
+.cabin-product-card {
+  position: relative;
+  background: var(--color-surface);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.cabin-product-image {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--color-vintage-beige);
+}
+
+.cabin-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.cabin-product-card:hover .cabin-product-image img {
+  transform: scale(1.1);
+}
+
+.cabin-product-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 33, 24, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  opacity: 0;
+}
+
+.cabin-product-card:hover .cabin-product-overlay {
+  background: rgba(42, 33, 24, 0.6);
+  opacity: 1;
+}
+
+.cabin-product-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.cabin-product-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-vintage-coffee);
+  margin-bottom: 0.5rem;
+}
+
+.cabin-product-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-vintage-gold);
+}
+
+/* ================================
+   GALLERY/PORTFOLIO GRID
+   ================================ */
+.cabin-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0;
+}
+
+.cabin-gallery-item {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cabin-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.cabin-gallery-item:hover img {
+  transform: scale(1.15);
+}
+
+.cabin-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 21, 18, 0.9) 0%,
+    rgba(26, 21, 18, 0) 60%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.cabin-gallery-item:hover .cabin-gallery-overlay {
+  opacity: 1;
+}
+
+/* ================================
+   TEAM SECTION
+   ================================ */
+.cabin-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.cabin-team-member {
+  text-align: center;
+}
+
+.cabin-team-photo {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--color-vintage-gold);
+  transition: all var(--transition-base);
+}
+
+.cabin-team-member:hover .cabin-team-photo {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 8px rgba(201, 169, 97, 0.2);
+}
+
+.cabin-team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cabin-team-name {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-vintage-coffee);
+  margin-bottom: 0.25rem;
+}
+
+.cabin-team-role {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-vintage-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ================================
+   PROGRESS BARS / SKILLS
+   ================================ */
+.cabin-skill {
+  margin-bottom: 2rem;
+}
+
+.cabin-skill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.cabin-skill-name {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-vintage-coffee);
+}
+
+.cabin-skill-percent {
+  font-family: var(--font-display);
+  color: var(--color-vintage-gold);
+}
+
+.cabin-skill-bar {
+  height: 4px;
+  background: var(--color-vintage-beige);
+  position: relative;
+  overflow: hidden;
+}
+
+.cabin-skill-fill {
+  height: 100%;
+  background: var(--color-vintage-gold);
+  transition: width 1.5s ease-out;
+}
+
+/* ================================
+   TESTIMONIALS
+   ================================ */
+.cabin-testimonial {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.cabin-testimonial-quote {
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--color-vintage-cream);
+  margin-bottom: 2rem;
+}
+
+.cabin-testimonial-quote::before {
+  content: '"';
+  display: block;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--color-vintage-gold);
+  line-height: 0.5;
+  margin-bottom: 1rem;
+}
+
+.cabin-testimonial-author {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-vintage-gold);
+}
+
+/* ================================
+   ANIMATIONS
+   ================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+/* Delay classes */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* ================================
+   CONTAINER
+   ================================ */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.container-wide {
+  max-width: 1440px;
+}
+
+.container-narrow {
+  max-width: 900px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* ================================
+   GRID SYSTEM
+   ================================ */
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* ================================
+   ORNAMENTAL CORNER
+   ================================ */
+.ornamental-corner {
+  position: relative;
+}
+
+.ornamental-corner::before,
+.ornamental-corner::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--color-vintage-gold);
+}
+
+.ornamental-corner::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.ornamental-corner::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* ================================
+   PRICE TAG
+   ================================ */
+.price-tag {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-vintage-gold);
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.price-tag .currency {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* ================================
+   SEPIA HOVER EFFECT
+   ================================ */
+.sepia-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.sepia-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(112, 66, 20, 0.2);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.sepia-hover:hover::after {
+  opacity: 1;
+}
+
+/* ================================
+   LOADING ANIMATION
+   ================================ */
+@keyframes vintage-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  animation: vintage-spin 1s linear infinite;
+}
+
+/* ================================
+   UTILITY CLASSES
+   ================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-uppercase { text-transform: uppercase; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+.gap-1 { gap: var(--spacing-xs); }
+.gap-2 { gap: var(--spacing-sm); }
+.gap-3 { gap: var(--spacing-md); }
+.gap-4 { gap: var(--spacing-lg); }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+/* ================================
+   RESPONSIVE GRID
+   ================================ */
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .sm\:gap-6 {
+    gap: 1.5rem !important;
+  }
+  .sm\:flex {
+    display: flex !important;
+  }
+  .sm\:hidden {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+/* Navbar - Force desktop menu to show */
+@media (min-width: 640px) {
+  nav button.sm\:hidden {
+    display: none !important;
+  }
+  nav div.hidden.sm\:flex {
+    display: flex !important;
+  }
+}
+
+/* ================================
+   BACKGROUND COLORS
+   ================================ */
+.bg-vintage-coffee { background-color: var(--color-vintage-coffee); }
+.bg-vintage-cream { background-color: var(--color-vintage-cream); }
+.bg-vintage-beige { background-color: var(--color-vintage-beige); }
+.bg-vintage-charcoal { background-color: var(--color-vintage-charcoal); }
+
+/* ================================
+   TEXT COLORS
+   ================================ */
+.text-vintage-coffee { color: var(--color-vintage-coffee); }
+.text-vintage-cream { color: var(--color-vintage-cream); }
+.text-vintage-gold { color: var(--color-vintage-gold); }
+.text-vintage-brown { color: var(--color-vintage-brown); }
+.text-vintage-beige { color: var(--color-vintage-beige); }
+.text-vintage-dark-brown { color: var(--color-vintage-dark-brown); }
+
+/* ================================
+   SCROLLBAR STYLING
+   ================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-vintage-beige);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-vintage-brown);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-vintage-gold);
+}
+
+/* ================================
+   SELECTION STYLING
+   ================================ */
+::selection {
+  background: var(--color-vintage-gold);
+  color: var(--color-vintage-coffee);
 }
