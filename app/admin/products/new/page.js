@@ -33,6 +33,13 @@ export default function NewProductPage() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      // Validate file type
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+      if (!allowedTypes.includes(file.type)) {
+        alert('Tipe file tidak valid! Gunakan JPG, PNG, WebP, atau GIF.');
+        return;
+      }
+
       if (file.size > 5000000) { // Limit to 5MB
         alert('Ukuran gambar terlalu besar! Maksimal 5MB.');
         return;
@@ -181,7 +188,7 @@ export default function NewProductPage() {
               <div>
                 <input
                   type="file"
-                  accept="image/*"
+                  accept="image/jpeg,image/png,image/webp,image/gif"
                   onChange={handleImageChange}
                   style={{
                     fontFamily: 'var(--font-sans)',
@@ -194,7 +201,7 @@ export default function NewProductPage() {
                   fontSize: '0.75rem',
                   color: 'var(--color-vintage-rust)'
                 }}>
-                  * Maksimal ukuran file 5MB (Disimpan di folder uploads)
+                  * Format: JPG, PNG, WebP, GIF. Maksimal 5MB.
                 </p>
               </div>
             </div>

@@ -3,6 +3,7 @@ import connectDB from '@/lib/mongodb';
 import Product from '@/models/Product';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
+import { UPLOAD_DIR, getImageUrl, ALLOWED_TYPES, MAX_FILE_SIZE } from '@/lib/upload';
 
 // GET /api/products - Get all products with optional filtering
 export async function GET(request) {
@@ -63,26 +64,42 @@ export async function POST(request) {
     let imageUrl = null;
 
     if (file && file.size > 0 && file.name !== 'undefined') {
+      // Validate file type
+      if (!ALLOWED_TYPES.includes(file.type)) {
+        return NextResponse.json(
+          { success: false, error: 'Tipe file tidak valid. Gunakan JPG, PNG, WebP, atau GIF.' },
+          { status: 400 }
+        );
+      }
+
+      // Validate file size
+      if (file.size > MAX_FILE_SIZE) {
+        return NextResponse.json(
+          { success: false, error: 'Ukuran file terlalu besar. Maksimal 5MB.' },
+          { status: 400 }
+        );
+      }
+
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
       // Create unique filename
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-      const ext = path.extname(file.name);
+      const ext = path.extname(file.name).toLowerCase();
       const filename = `product-${uniqueSuffix}${ext}`;
       
-      // Save to public/uploads
-      const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+      // Ensure upload directory exists
       try {
-        await mkdir(uploadDir, { recursive: true });
+        await mkdir(UPLOAD_DIR, { recursive: true });
       } catch (error) {
         // Ignore error if directory exists
       }
-      const filepath = path.join(uploadDir, filename);
+      const filepath = path.join(UPLOAD_DIR, filename);
       
       await writeFile(filepath, buffer);
       
-      imageUrl = `/uploads/${filename}`;
+      // Use helper to get correct URL format
+      imageUrl = getImageUrl(filename);
     }
 
     // Process tasting notes
