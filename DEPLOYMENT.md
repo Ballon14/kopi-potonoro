@@ -30,13 +30,13 @@ sudo apt install -y nginx
 
 ```bash
 # Buat direktori upload di luar project
-sudo mkdir -p /var/www/kopi-potorono/uploads
+sudo mkdir -p /var/www/kopi-potonoro/uploads
 
 # Set ownership ke user yang menjalankan Node.js
-sudo chown -R $USER:$USER /var/www/kopi-potorono
+sudo chown -R $USER:$USER /var/www/kopi-potonoro
 
 # Set permissions
-chmod 755 /var/www/kopi-potorono/uploads
+chmod 755 /var/www/kopi-potonoro/uploads
 ```
 
 ### 3. Clone & Build Project
@@ -65,7 +65,7 @@ MONGODB_URI=mongodb://localhost:27017/kopiku
 
 # Production settings
 NODE_ENV=production
-UPLOAD_DIR=/var/www/kopi-potorono/uploads
+UPLOAD_DIR=/var/www/kopi-potonoro/uploads
 
 # Tambahkan key lain sesuai kebutuhan
 # NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=xxx
@@ -145,7 +145,7 @@ sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
 - URL: `/uploads/filename.jpg`
 
 ### Production
-- Upload ke: `/var/www/kopi-potorono/uploads/`
+- Upload ke: `/var/www/kopi-potonoro/uploads/`
 - URL: `/api/uploads/filename.jpg` (served via API)
 
 ## Maintenance
@@ -153,7 +153,7 @@ sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
 ### Backup Uploads
 ```bash
 # Backup folder upload
-tar -czf uploads-backup-$(date +%Y%m%d).tar.gz /var/www/kopi-potorono/uploads
+tar -czf uploads-backup-$(date +%Y%m%d).tar.gz /var/www/kopi-potonoro/uploads
 ```
 
 ### Logs
@@ -167,7 +167,7 @@ pm2 restart kopiku
 
 ### Update Aplikasi
 ```bash
-cd /var/www/kopi-potorono-app
+cd /var/www/kopi-potonoro-app
 git pull
 npm install
 npm run build
@@ -177,12 +177,12 @@ pm2 restart kopiku
 ## Troubleshooting
 
 ### Gambar tidak muncul
-1. Cek permission folder upload: `ls -la /var/www/kopi-potorono/uploads`
+1. Cek permission folder upload: `ls -la /var/www/kopi-potonoro/uploads`
 2. Cek UPLOAD_DIR di .env.local
 3. Cek logs: `pm2 logs kopiku`
 
 ### Permission denied
 ```bash
-sudo chown -R $USER:$USER /var/www/kopi-potorono
-chmod 755 /var/www/kopi-potorono/uploads
+sudo chown -R $USER:$USER /var/www/kopi-potonoro
+chmod 755 /var/www/kopi-potonoro/uploads
 ```
